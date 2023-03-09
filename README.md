@@ -12,6 +12,11 @@ Tools/technology: Adv. Java :(Servlet, JSP-JSTL, JDBC), Html-CSS, Bootstrap, Tom
 
 # Some Screenshots
 
+![index ](https://user-images.githubusercontent.com/72886216/224087222-622ec357-5d25-45bd-bbc1-4ee800c188a4.jpg)
+![index2](https://user-images.githubusercontent.com/72886216/224087237-abf06788-8e88-4271-b080-28165705cb31.jpg)
+
+
+
 ![adminlogin](https://user-images.githubusercontent.com/72886216/224085801-830ccdaf-9d12-45ca-9f19-0b101cd92f0c.png)
 
 ![admin](https://user-images.githubusercontent.com/72886216/224085784-101a2716-fdb0-4457-87c8-4130134fde34.png)
