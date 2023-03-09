@@ -25,7 +25,7 @@ public class LoginDAO {
 				
 			}
 		} catch (Exception e) {
-			// TODO: handle exception
+			e.printStackTrace();
 		}
 		return user;
 		 

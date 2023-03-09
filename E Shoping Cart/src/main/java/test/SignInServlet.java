@@ -9,13 +9,12 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-@WebServlet("/user-login")
+@WebServlet("/user-sign")
 @SuppressWarnings("serial")
-public class LoginServlet extends HttpServlet {
-	
+public class SignInServlet extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		resp.sendRedirect("login.jsp");
+//		resp.sendRedirect("login.jsp");
 		
 	}
 	
@@ -24,30 +23,27 @@ public class LoginServlet extends HttpServlet {
 		resp.setContentType("text/html");
 		try (PrintWriter pw=resp.getWriter()){
 
-		UserBean ub= new LoginDAO().userLogin(req);
+		int k= new SignInDAO().userSignIN(req);
 		
-		if(ub!=null) {
-			req.getSession().setAttribute("admin", ub);
-			resp.sendRedirect("index.jsp");
-		}
-		else {
-			pw.println(" <link href='https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css' rel='stylesheet'>"
-	    			+ "  <script src='https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js'></script>");
-			pw.println("<div class='alert alert-danger alert-dismissible'>");
+		if(k>0) {
+			pw.println("<div class='alert alert-success alert-dismissible'>");
 			pw.println(" <button type='button' class='btn-close' data-bs-dismiss='alert'></button>");
-			pw.println("<strong>Sorry!</strong> Login Failed.");
+			pw.println("<strong>Success!</strong> Account Created.");
 			pw.println("</div>");
 			RequestDispatcher rd=req.getRequestDispatcher("login.jsp");
+			rd.include(req, resp);
+			
+		}
+		else {
+			pw.println("<div class='alert alert-danger alert-dismissible fade show'>");
+			pw.println(" <button type='button' class='btn-close' data-bs-dismiss='alert'></button>");
+			pw.println("<strong>Success!</strong> Sorry Please Try Again!!!");
+			pw.println("</div>");
+			RequestDispatcher rd=req.getRequestDispatcher("signUp.jsp");
 			rd.include(req, resp);
 		}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-	
 	}
-
-	
-	
-	
-
 }
